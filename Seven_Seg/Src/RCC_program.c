@@ -80,10 +80,10 @@ u8	RCC_voidEnablePerClk(u8 RCC_u8CopyBus,u8 RCC_u8CopyPer)
 	{
 		switch(RCC_u8CopyBus)
 		{
-			case RCC_AHB1: SET_BIT(RCC_AHB1ENR,RCC_u8CopyPer);
-			case RCC_AHB2: SET_BIT(RCC_AHB2ENR,RCC_u8CopyPer);
-			case RCC_APB1: SET_BIT(RCC_APB1ENR,RCC_u8CopyPer);
-			case RCC_APB2: SET_BIT(RCC_APB2ENR,RCC_u8CopyPer);
+			case RCC_AHB1: SET_BIT(RCC_AHB1ENR,RCC_u8CopyPer);break;
+			case RCC_AHB2: SET_BIT(RCC_AHB2ENR,RCC_u8CopyPer);break;
+			case RCC_APB1: SET_BIT(RCC_APB1ENR,RCC_u8CopyPer);break;
+			case RCC_APB2: SET_BIT(RCC_APB2ENR,RCC_u8CopyPer);break;
 			default : Local_u8Error =NOK;
 
 			
@@ -110,10 +110,10 @@ u8	RCC_voidDisablePerClk(u8 RCC_u8CopyBus,u8 RCC_u8CopyPer)
 	{
 		switch(RCC_u8CopyBus)
 		{
-			case RCC_AHB1: CLEAR_BIT(RCC_AHB1ENR,RCC_u8CopyPer);
-			case RCC_AHB2: CLEAR_BIT(RCC_AHB2ENR,RCC_u8CopyPer);
-			case RCC_APB1: CLEAR_BIT(RCC_APB1ENR,RCC_u8CopyPer);
-			case RCC_APB2: CLEAR_BIT(RCC_APB2ENR,RCC_u8CopyPer);
+			case RCC_AHB1: CLEAR_BIT(RCC_AHB1ENR,RCC_u8CopyPer);break;
+			case RCC_AHB2: CLEAR_BIT(RCC_AHB2ENR,RCC_u8CopyPer);break;
+			case RCC_APB1: CLEAR_BIT(RCC_APB1ENR,RCC_u8CopyPer);break;
+			case RCC_APB2: CLEAR_BIT(RCC_APB2ENR,RCC_u8CopyPer);break;
 			default : Local_u8Error =NOK;
 
 			
