@@ -11,7 +11,7 @@
 /* options : RCC_u8Clk_Disable                                                                                   */
 /*           RCC_u8Clk_Enable                                                                               */
 #define RCC_u8HSION_Mode         RCC_u8Clk_Enable
-#define RCC_u8HSEON_Mode         RCC_u8Clk_Disable
+#define RCC_u8HSEON_Mode         RCC_u8Clk_Enable
 #define RCC_u8PLL_Mode           RCC_u8Clk_Enable
 
 
@@ -27,16 +27,16 @@
 
    
  /* Note: you can choose any number from 000010 to 111111 */
-#define PLL_InClk_Division_Factor           000010
+#define PLL_InClk_Division_Factor           0b000010
 
- /* Note: you can choose any number from 000000010 to 110110000 */
-#define PLL_VCO_Multiplication_Factor       000000010
+ /* Note: you can choose any number from 011000000 to 110110000 */
+#define PLL_VCO_Multiplication_Factor       0b011000000
 
  /* Note: you can choose any number from 00 to 11 */
-#define PLL_MainClk_Division_Factor         00
+#define PLL_MainClk_Division_Factor         0b01
 
  /* Note: you can choose any number from 0010 to 1111 */
-#define PLL_USB_OTG_Division_Factor         0010
+#define PLL_USB_OTG_Division_Factor         0b0010
 
 /* options : HSIClk_Selected                                                                                   */
 /*           HSEClk_Selected                                                                               */

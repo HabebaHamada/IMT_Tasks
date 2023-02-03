@@ -1,14 +1,15 @@
 /*************************************************************/
 /*************       Author: Habeba Hamada    ****************/
 /*************       LAYER: MCAL               ****************/
-/*************       Component: GPIO           ****************/
+/*************       Component: USART           ****************/
 /*************       Version: 2.00            ****************/
 /*************************************************************/
 
-#ifndef GPIO_CONFIG_H_
-#define GPIO_CONFIG_H_
+#ifndef USART_CONFIG_H_
+#define USART_CONFIG_H_
+
+
+#define THRESHOLD_VALUE 5000000
+
 
 #endif
-
-
-

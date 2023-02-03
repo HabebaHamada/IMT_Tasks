@@ -6,55 +6,68 @@
 /*************************************************************/
 
 
-#ifndef		RCC_INTERFACE_H
-#define		RCC_INTERFACE_H
+#ifndef		RCC_INTERFACE_H_
+#define		RCC_INTERFACE_H_
 
 #define		RCC_AHB1		0
 #define		RCC_AHB2		1
 #define		RCC_APB1		2
 #define		RCC_APB2		3
 
-/* Peripherals at AHB1 */
-#define AHB1_DMA2               22
-#define AHB1_DMA1               21
-#define AHB1_CRC                12
-#define AHB1_GPIOC              2
-#define AHB1_GPIOB              1
-#define AHB1_GPIOA              0
-
-/* Peripherals at AHB2 */
-#define AHB2_USB_OTG_FS         7
-
-/* Peripherals at APB1 */
-#define APB1_POWER              28
-#define APB1_I2C3               23
-#define APB1_I2C2               22
-#define APB1_I2C1               21
-#define APB1_USART              17
-#define APB1_SPI3               15
-#define APB1_SPI2               14
-#define APB1_WATCHDOG           11
-#define APB1_TIMER5             3
-#define APB1_TIMER4             2
-#define APB1_TIMER3             1
-#define APB1_TIMER2             0
-
-/* Peripherals at APB2 */
-#define APB2_TIMER11            18
-#define APB2_TIMER10            17
-#define APB2_TIMER9             16
-#define APB2_SYSCFG             14
-#define APB2_SPI4               13
-#define APB2_SPI1               12
-#define APB2_SDIO               11
-#define APB2_ADC1               8
-#define APB2_USART6             5
-#define APB2_USART1             4
-#define APB2_TIMER1             0
+typedef enum{  
+        GPIOA,
+	    GPIOB,
+	    GPIOC,
+	    GPIOD,
+	    GPIOE,
+	    GPIOH=7,
+		CRC =12,
+	    DMA1=21,
+	    DMA2,
+		OTGFS=7,
+		TIM2=0,
+		TIM3,
+		TIM4,
+		TIM5,
+	    WWDG=11,
+        SPI2=14,
+		SPI3,
+		USART2=17,
+		I2C1=21,
+		I2C2,
+		I2C3,
+		PWR=28,
+		TIM1=0,
+		USART1=4,
+		USART6,
+		ADC1=8,
+		SDIO=11,
+		SPI1,
+		SPI4,
+		SYSCFG,
+		TIM9=16,
+		TIM10,
+		TIM11,
+}Peripherals_t;
 
 void	RCC_voidSysClkInit(void);
 
-u8	RCC_voidEnablePerClk(u8 RCC_u8CopyBus,u8 RCC_u8CopyPer);
-u8	RCC_voidDisablePerClk(u8 RCC_u8CopyBus,u8 RCC_u8CopyPer);
+/*
+ * NAME:RCC_voidPeripheralClockEnable
+ * RETURN TYPE: u8
+ * ARGUMENTS: RCC_u8CopyBus:U8 , (AHB,APB1,ABP2)
+ * 			  RCC_u8CopyPer : Peripherals_t , (ENUM VALUES)
+ * DESCRIPTION: ENABLES PREPHIRAL CLK FOR CERTAIN PERIRHERAL
+ */
+u8	RCC_voidPeripheralClockEnable(u8 RCC_u8CopyBus,Peripherals_t RCC_u8CopyPeripheral);
+
+/*
+ * NAME:RCC_voidPeripheralClockDisable
+ * RETURN TYPE: u8
+ * ARGUMENTS: RCC_u8CopyBus:U8 , (AHB,APB1,ABP2)
+ * 			  RCC_u8CopyPer : Peripherals_t , (ENUM VALUES)
+ * DESCRIPTION: DISABLES PREPHIRAL CLK FOR CERTAIN PERIRHERAL
+ */
+u8	RCC_voidPeripheralClockDisable(u8 RCC_u8CopyBus,Peripherals_t RCC_u8CopyPeripheral);
 
 #endif
