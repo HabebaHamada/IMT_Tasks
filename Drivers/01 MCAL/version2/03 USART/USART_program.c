@@ -61,6 +61,8 @@ void USART_voidSendByte(USART_t *USARTx,u8 Copy_u8Data)
 
 	/* clear TC flag */
 	CLEAR_BIT(USARTx->SR, USART_SR_TC);
+
+	USARTx->DR = 0;
 }
 
 
@@ -92,7 +94,7 @@ void USART_voidReceiveByteSynchBlocking(USART_t *USARTx, u8* Ptr_u8Data)
 	if(Ptr_u8Data != NULL)
 	{
 		/* Wait until Reception is complete */
-		while(!(GET_BIT(USARTx->SR, USART_SR_RXNE)));
+		while(GET_BIT(USARTx->SR, USART_SR_RXNE)==0);
 
 		/* Store the Data to the Pointer */
 		*(Ptr_u8Data) = USARTx->DR;
