@@ -1,9 +1,9 @@
-/*************************************************************/
-/*************       Author: Habeba Hamada    ****************/
-/*************       LAYER: MCAL               ****************/
-/*************       Component: RCC           ****************/
-/*************       Version: 1.00            ****************/
-/*************************************************************/
+/**************************************************************
+/                    Author : Habeba Hamada                    /
+/                    LAYER  : MCAL                             /
+/                    SWC    : RCC                              /
+/                    Version: 1.00                             /
+/**************************************************************/
 
 #include"STD_TYPES.h"
 #include"BIT_Manipulation.h"
@@ -12,7 +12,7 @@
 #include"RCC_interface.h"
 
 
-void	RCC_voidSysClkInit(void)
+void RCC_voidSystemClockInit(void)
 {
 
     /******************MCO1,2 Prescaler*************/
@@ -31,7 +31,7 @@ void	RCC_voidSysClkInit(void)
   	RCC->CFGR|=(System_Clk_Source<<RCC_CFGR_SW0);
 
 	/****************** AHB Prescaler ******************/
-  	RCC->CFGR|=(RCC_u8SYSCLK_Division_by_2<<RCC_CFGR_HPRE0);
+  	RCC->CFGR|=(RCC_u8AHB_PRESCALER<<RCC_CFGR_HPRE0);
 
 
 	/****************** APB1 Prescaler ******************/
@@ -93,22 +93,15 @@ u8	RCC_voidPeripheralClockEnable(u8 RCC_u8CopyBus,Peripherals_t RCC_u8CopyPeriph
 		}
 			
 	}
-	else
-	{
-		
-		Local_u8Error =NOK;
-		
-	}
-		
-		
+	else Local_u8Error =NOK;
+
 	return Local_u8Error;
-	
-	
 }
 
 u8	RCC_voidPeripheralClockDisable(u8 RCC_u8CopyBus,Peripherals_t RCC_u8CopyPeripheral)
 {
 	u8 Local_u8Error=OK;
+
 	if (RCC_u8CopyPeripheral<32)
 	{
 		switch(RCC_u8CopyBus)
@@ -120,19 +113,11 @@ u8	RCC_voidPeripheralClockDisable(u8 RCC_u8CopyBus,Peripherals_t RCC_u8CopyPerip
 			default : Local_u8Error =NOK;
 
 			
-		}
-			
+    	}
 	}
-	else
-	{
-		
-		Local_u8Error =NOK;
-		
-	}
-		
+	else Local_u8Error =NOK;
+
 		
 	return Local_u8Error;
-	
-	
 }
 

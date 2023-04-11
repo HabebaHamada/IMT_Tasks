@@ -1,9 +1,10 @@
-/*************************************************************/
-/*************       Author: Habeba Hamada    ****************/
-/*************       LAYER: MCAL               ****************/
-/*************       Component: RCC           ****************/
-/*************       Version: 1.00            ****************/
-/*************************************************************/
+/**************************************************************
+/                    Author : Habeba Hamada                    /
+/                    LAYER  : MCAL                             /
+/                    SWC    : RCC                              /
+/                    Version: 1.00                             /
+/**************************************************************/
+
 
 #ifndef RCC_CONFIG_H_
 #define RCC_CONFIG_H_
@@ -12,7 +13,7 @@
 /*           RCC_u8Clk_Enable                                                                               */
 #define RCC_u8HSION_Mode         RCC_u8Clk_Enable
 #define RCC_u8HSEON_Mode         RCC_u8Clk_Enable
-#define RCC_u8PLL_Mode           RCC_u8Clk_Enable
+#define RCC_u8PLL_Mode           RCC_u8Clk_Disable
 
 
 /* options : RCC_u8BYPASSED                                                                                   */
@@ -58,7 +59,7 @@
            8-RCC_u8SYSCLK_Division_by_256
            9-RCC_u8SYSCLK_Division_by_512   */
 
-#define RCC_u8AHB_PRESCALER     RCC_u8SYSCLK_Division_by_2
+#define RCC_u8AHB_PRESCALER     RCC_u8SYSCLK_Division_by_1
 
 
 /*Options 1-RCC_u8AHB_CLK_Division_by_1 
@@ -68,8 +69,8 @@
           5-RCC_u8AHB_CLK_Division_by_16
 
 */
-#define RCC_u8APB1_PRESCALER    RCC_u8AHB_CLK_Division_by_2  /*Shoudn't excced 84 MHZ*/
-#define RCC_u8APB2_PRESCALER    RCC_u8AHB_CLK_Division_by_2  /*Shoudn't excced 42 MHZ*/
+#define RCC_u8APB1_PRESCALER    RCC_u8AHB_CLK_Division_by_16  /*Shoudn't excced 84 MHZ*/
+#define RCC_u8APB2_PRESCALER    RCC_u8AHB_CLK_Division_by_1  /*Shoudn't excced 42 MHZ*/
 
 /*Options 1-HSI_MCO1_Selected 
           2-LSE_MCO1_Selected 
