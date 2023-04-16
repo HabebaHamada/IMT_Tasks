@@ -4,22 +4,20 @@
 /* Date      : 18 Mar 2023                                                     */
 /*********************************************************************************/
 
-#ifndef PWM_INTERFACE_H
-#define PWM_INTERFACE_H
-
-#define TIM1 1
-#define TIM2 2
-#define TIM3 3
-#define TIM4 4
-
-#define CH1 1
-#define CH2 2
-#define CH3 3
-#define CH4 4
+#ifndef PWM_CONFIG_H
+#define PWM_CONFIG_H
 
 
-void  PWM_voidSetPinDirection(u8 Copy_u8tim, u8 Copy_u8ch);
-void  PWM_voidWrite(u8 Copy_u8tim, u8 Copy_u8ch,u16 Copy_u16dutyCycle);
+// pwm_freq=f_clk/(PSC+1)/(ARR+1)
+
+//prescaler=1 and arr=65534 at clk=72MHZ
+
+
+#define ARR_TIM1 65534
+#define ARR_TIM2 65534
+#define ARR_TIM3 65534
+#define ARR_TIM4 65534
+
 
 
 #endif
