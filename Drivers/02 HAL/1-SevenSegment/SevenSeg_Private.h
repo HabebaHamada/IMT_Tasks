@@ -8,6 +8,8 @@
 #ifndef _SEVENSEG_PRIVATE_H_
 #define _SEVENSEG_PRIVATE_H_
 
+
+/*Seven_Segment cathode*/
 #define SSD_NUMBER0        0x3F   
 #define SSD_NUMBER1	       0x06
 #define SSD_NUMBER2	   	   0x5B

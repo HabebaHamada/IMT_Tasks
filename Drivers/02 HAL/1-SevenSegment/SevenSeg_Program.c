@@ -60,10 +60,10 @@ for number 9 --> A, B, C, D, F, G      --> 0 1 1 0 1 1 1 1 --> 0x6F
 */
 
 
-#include "STD_TYPES.h"
-#include "BIT_Manipulation.h"
+#include "../../00-LIB/STD_TYPES.h"
+#include "../../00-LIB/BIT_Manipulation.h"
 
-#include "GPIO_interface.h"
+#include "../../01-MCAL/02-GPIO/GPIO_interface.h"
 
 #include "SevenSeg_Interface.h"
 #include "SevenSeg_Private.h"
@@ -74,12 +74,12 @@ void SSD_Display_Number(Seven_Segment_Object Copy_Seven_Segment, u8 Copy_u8Numbe
 {
 	/* 
 		This Equation is used to limit the indices used to the array if the user entered a wrong index. 
-		if the user entered a number between 0 - 10 the SSD will display the the corresponding value of this index.
+		if the user entered a number between 0 - 10 the SSD will display the corresponding value of this index.
 		but if the user entered a number greater than the array size the index will be the index of Error.
 	*/
 	u8 SSD_NUMBER_INDEX = ((Copy_u8Number <= SSD_MAX_DISPLAY) * Copy_u8Number) + (SSD_ERROR_INDEX * (Copy_u8Number > SSD_MAX_DISPLAY));
-	GPIO_u8WritePinValue(Copy_Seven_Segment.Enable_Pin, Copy_Seven_Segment.Enable_port,GET_BIT(Copy_Seven_Segment.Mode, 0));
-	GPIO_u8SetGroupChannel(Copy_Seven_Segment.Port,Copy_Seven_Segment.Start_Pin,8,(Copy_Seven_Segment.Mode) ^ (SSD_NUMBER_ARRAY[SSD_NUMBER_INDEX]));
+	GPIO_SetPinValue(Copy_Seven_Segment.Enable_port, Copy_Seven_Segment.Enable_Pin,GET_BIT(Copy_Seven_Segment.Mode, 0));
+	GPIO_voidSetGroupChannel(Copy_Seven_Segment.Port,Copy_Seven_Segment.Start_Pin,8,(Copy_Seven_Segment.Mode) ^ (SSD_NUMBER_ARRAY[SSD_NUMBER_INDEX]));
 }
 
 

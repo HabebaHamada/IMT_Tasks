@@ -35,5 +35,6 @@ struct _LED_
 
 
 void LED_Status(LED_Object Copy_LED, u8 Copy_u8LED_Status);
+void LED_Toggle(LED_Object Copy_LED);
 
 #endif
