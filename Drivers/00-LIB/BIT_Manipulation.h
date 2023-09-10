@@ -20,8 +20,11 @@
 #define READ_BIT(Reg,Bit)                                Reg&Mask(Bit) 
 #define ASSIGN_BIT(Reg,Bit,value)                        Reg=(Reg & (~Mask(Bit)))|(value<<Bit)    
 
-#define BitManipulationSetBits(Reg,offset,width,value)    (Reg & (~((Mask(width)-1)<<offset)))|(value<<offset)
+//#define BitManipulationSetBits(Reg,offset,width,value)    (Reg & (~((Mask(width)-1)<<offset)))|(value<<offset)
 #define BitManipulationGetBits(Reg,offset,width)          (Reg & ((Mask(width)-1)<<offset))
+
+#define BitManipulationSetBits(Variable, Bits_Offest, Bits_Width, Value) \
+(((Variable) & ~(((1U << (Bits_Width)) - 1U) << (Bits_Offest))) | (((Value) & ((1U << (Bits_Width)) - 1U)) << (Bits_Offest)))
 
            
 #define BIT_IS_SET(Reg,Bit)                   ((Reg&Mask(Bit)) >>Bit)                      
