@@ -1,19 +1,18 @@
-/**************************************************************
-/                    Author : Habeba Hamada                    /
-/                    LAYER  : MCAL                             /
-/                    SWC    : RCC                              /
-/                    Version: 1.00                             /
-**************************************************************/
+/*************************************************************/
+/*************       Author: Habeba Hamada    ****************/
+/*************       LAYER: MCAL               ****************/
+/*************       Component: RCC           ****************/
+/*************       Version: 1.00            ****************/
+/*************************************************************/
+
 
 #ifndef		RCC_INTERFACE_H_
 #define		RCC_INTERFACE_H_
 
-typedef enum{
-	RCC_AHB1,
-	RCC_AHB2,
-	RCC_APB1,
-	RCC_APB2,
-}Bus_t;
+#define		RCC_AHB1		0
+#define		RCC_AHB2		1
+#define		RCC_APB1		2
+#define		RCC_APB2		3
 
 typedef enum{  
         RCC_GPIOA,
@@ -54,21 +53,21 @@ typedef enum{
 void	RCC_voidSystemClockInit(void);
 
 /*
- * Name       : RCC_u8PeripheralClockEnable
+ * NAME:RCC_voidPeripheralClockEnable
  * RETURN TYPE: u8
- * ARGUMENTS  : RCC_u8CopyBus : Bus_t
- * 			    RCC_u8CopyPer : Peripherals_t
- * DESCRIPTION: enable peripheral clock
+ * ARGUMENTS: RCC_u8CopyBus:U8 , (AHB,APB1,ABP2)
+ * 			  RCC_u8CopyPer : Peripherals_t , (ENUM VALUES)
+ * DESCRIPTION: ENABLES PREPHIRAL CLK FOR CERTAIN PREPHIRAL
  */
-u8	RCC_u8PeripheralClockEnable(Bus_t RCC_u8CopyBus,Peripherals_t RCC_u8CopyPeripheral);
+u8	RCC_voidPeripheralClockEnable(u8 RCC_u8CopyBus,Peripherals_t RCC_u8CopyPeripheral);
 
 /*
- * Name       : RCC_u8PeripheralClockEnable
+ * NAME:RCC_voidPeripheralClockDisable
  * RETURN TYPE: u8
- * ARGUMENTS  : RCC_u8CopyBus : Bus_t
- * 			    RCC_u8CopyPer : Peripherals_t
- * DESCRIPTION: disable peripheral clock
+ * ARGUMENTS: RCC_u8CopyBus:U8 , (AHB,APB1,ABP2)
+ * 			  RCC_u8CopyPer : Peripherals_t , (ENUM VALUES)
+ * DESCRIPTION: DISABLES PREPHIRAL CLK FOR CERTAIN PERIRHERAL
  */
-u8	RCC_u8PeripheralClockDisable(Bus_t RCC_u8CopyBus,Peripherals_t RCC_u8CopyPeripheral);
+u8	RCC_voidPeripheralClockDisable(u8 RCC_u8CopyBus,Peripherals_t RCC_u8CopyPeripheral);
 
 #endif

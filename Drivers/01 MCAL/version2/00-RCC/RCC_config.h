@@ -1,30 +1,29 @@
-/***************************************************************
-/                    Author : Habeba Hamada                    /
-/                    LAYER  : MCAL                             /
-/                    SWC    : RCC                              /
-/                    Version: 1.00                             /
-**************************************************************/
-
+/*************************************************************/
+/*************       Author: Habeba Hamada    ****************/
+/*************       LAYER: MCAL               ****************/
+/*************       Component: RCC           ****************/
+/*************       Version: 1.00            ****************/
+/*************************************************************/
 
 #ifndef RCC_CONFIG_H_
 #define RCC_CONFIG_H_
 
-/* options : RCC_Disable                                                                                   */
-/*           RCC_Enable                                                                               */
-#define RCC_HSION_Mode         RCC_Enable
-#define RCC_HSEON_Mode         RCC_Enable
-#define RCC_PLL_Mode           RCC_Disable
+/* options : RCC_u8Clk_Disable                                                                                   */
+/*           RCC_u8Clk_Enable                                                                               */
+#define RCC_u8HSION_Mode         RCC_u8Clk_Enable
+#define RCC_u8HSEON_Mode         RCC_u8Clk_Enable
+#define RCC_u8PLL_Mode           RCC_u8Clk_Disable
 
 
-/* options : RCC_Disable                                                                                   */
-/*           RCC_Enable                                                                                  */
-#define RCC_HSEYPASS             RCC_Disable
+/* options : RCC_u8BYPASSED                                                                                   */
+/*           RCC_u8NOT_BYPASSED                                                                               */
+#define RCC_u8HSEPYB             RCC_u8NOT_BYPASSED
 
 /* Clock Security System PIN configuration as it is set and cleared by software to enable clk security system*/
-/* options : DetectorOFF                                                                           */
-/*           DetectorON                                                                            */
+/* options : RCC_u8CLK_DETECTOR_OFF                                                                           */
+/*           RCC_u8CLK_DETECTOR_ON                                                                            */
     
-#define RCC_CLOCK_Security        DetectorON
+#define RCC_u8CSSON              RCC_u8CLK_DETECTOR_ON
 
    
  /* Note: you can choose any number from 000010 to 111111 */
@@ -39,71 +38,70 @@
  /* Note: you can choose any number from 0010 to 1111 */
 #define PLL_USB_OTG_Division_Factor         0b0010
 
+/* options : HSIClk_Selected                                                                                   */
+/*           HSEClk_Selected                                                                               */
+#define PLL_Clk_Source            HSIClk_Selected  //16
 
-
-/* options : HSIClk                                                                                   */
-/*           HSEClk                                                                              */
-#define PLL_Clk_Source            HSIClk
-
-/* options : RCC_HSI,
-	         RCC_HSE,
-	         RCC_PLL
+/* options : RCC_u8HSI_SYSCLK                                                                                   */
+/*           RCC_u8HSE_SYSCLK
+             RCC_u8PLL_SYSCLK
 */
-#define System_Clock_Source       RCC_HSI
+#define System_Clk_Source         RCC_u8HSI_SYSCLK   //16 MHz
 
-/* options
- *  AHB_NO,
-	AHB_PRE_2,
-	AHB_PRE_4,
-	AHB_PRE_8,
-	AHB_PRE_16,
-	AHB_PRE_64,
-	AHB_PRE_128,
-	AHB_PRE_256,
-	AHB_PRE_512,
-	AHB_Default,   */
+/* options 1-RCC_u8SYSCLK_Division_by_1    
+           2-RCC_u8SYSCLK_Division_by_2  
+           3-RCC_u8SYSCLK_Division_by_4  
+           4-RCC_u8SYSCLK_Division_by_8  
+           5-RCC_u8SYSCLK_Division_by_16 
+           6-RCC_u8SYSCLK_Division_by_64 
+           7-RCC_u8SYSCLK_Division_by_128
+           8-RCC_u8SYSCLK_Division_by_256
+           9-RCC_u8SYSCLK_Division_by_512   */
 
-#define RCC_AHB_PRESCALER     AHB_Default
+#define RCC_u8AHB_PRESCALER     RCC_u8SYSCLK_Division_by_1
 
 
-/*Options
- *  APB_NO,
-	APB_PRE_2,
-	APB_PRE_4,
-	APB_PRE_8,
-	APB_PRE_16,
-	APB_Default,
+/*Options 1-RCC_u8AHB_CLK_Division_by_1 
+          2-RCC_u8AHB_CLK_Division_by_2 
+          3-RCC_u8AHB_CLK_Division_by_4 
+          4-RCC_u8AHB_CLK_Division_by_8 
+          5-RCC_u8AHB_CLK_Division_by_16
 
 */
-#define RCC_APB1_PRESCALER    APB_PRE_16                    /*Shoudn't excced 84 MHZ*/
-#define RCC_APB2_PRESCALER    APB_Default                   /*Shoudn't excced 42 MHZ*/
+#define RCC_u8APB1_PRESCALER    RCC_u8AHB_CLK_Division_by_1  /*Shoudn't excced 84 MHZ*/
+#define RCC_u8APB2_PRESCALER    RCC_u8AHB_CLK_Division_by_1   /*Shoudn't excced 42 MHZ*/
 
-/*Options MCO1_HSI,
-	      MCO1_LSE,
-	      MCO1_HSE,
-	      MCO1_PLL,
-	      MCO1_Default = MCO1_HSI
+/*Options 1-HSI_MCO1_Selected 
+          2-LSE_MCO1_Selected 
+          3-HSE_MCO1_Selected 
+          4-PLL_MCO1_Selected 
 
 */
-#define MCO1_Clock_Source   MCO1_Default
+#define Microcontroller_Clk_Output1   HSE_MCO1_Selected
 
-/*Options MCO2_SYSCLK,
-	      MCO2_PLLI2S,
-	      MCO2_HSE,
-	      MCO2_PLL,
-	      MCO2_Default = MCO2_SYSCLK
+/*Options 1-SYSCLK_MCO2_Selected 
+          2-PLLI2S_MCO2_Selected 
+          3-HSE_MCO2_Selected    
+          4-PLL_MCO2_Selected    
 
 */
 
-#define MCO2_Clock_Source   MCO2_Default
+#define Microcontroller_Clk_Output2   SYSCLK_MCO2_Selected
 
-/*Options     No_Division,
-	          Division_By_2,
-	          Division_By_3,
-	          Division_By_4,
-              Division_By_5
+/*Options      1-RCC_u8MCO_CLK_Division_No   
+               2-RCC_u8MCO_CLK_Division_by_2 
+               3-RCC_u8MCO_CLK_Division_by_3 
+               4-RCC_u8MCO_CLK_Division_by_4 
+               5-RCC_u8MCO_CLK_Division_by_5 
 */
-#define MCO1_Prescaler   Division_By_2
-#define MCO2_Prescaler   Division_By_2
+#define Microcontroller_Clk1_Prescaler   RCC_u8MCO_CLK_Division_by_2
+#define Microcontroller_Clk2_Prescaler   RCC_u8MCO_CLK_Division_by_2
+
+/*Options 1-RCC_u8GPIO_Reset   
+          2-RCC_u8GPIO_Reset_NO
+*/
+#define GPIOA_Reset_State               RCC_u8GPIO_Reset_NO
+#define GPIOB_Reset_State               RCC_u8GPIO_Reset_NO
+#define GPIOC_Reset_State               RCC_u8GPIO_Reset_NO
 
 #endif
