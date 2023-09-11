@@ -8,27 +8,12 @@
 #ifndef USART_INTERFACE_H_
 #define USART_INTERFACE_H_
 
-
-#define USART1_BASE_ADD                (u32)(0x40011000)
-#define USART2_BASE_ADD                (u32)(0x40004400)
-#define USART6_BASE_ADD                (u32)(0x40011400)
-
-
-typedef struct
+typedef enum
 {
-	 u32 SR;
-	 u32 DR;
-	 u32 BRR;
-	 u32 CR1;
-	 u32 CR2;
-	 u32 CR3;
-     u32 GTPR ;
-}USART_t;
-
-
-#define USART_1                        ((volatile USART_t*)(USART1_BASE_ADD))
-#define USART_2                        ((volatile USART_t*)(USART2_BASE_ADD))
-#define USART_6                        ((volatile USART_t*)(USART6_BASE_ADD))
+	UART1,
+	UART2,
+	UART7,
+}UART_t;
 
 typedef struct
 {
@@ -55,16 +40,11 @@ typedef struct
 }USART_ClockInitTypeDef;
 
 /* Baud Rates configurations*/
-#define USART_9600_16MHZ         0x682
-#define USART_9600_25MHZ         0xA2C
-#define USART_19200_16MHZ        0x341
-#define USART_19200_25MHZ        0x516
+#define USART_9600_8MHZ          0x682   //104.125
+#define USART_9600_16MHZ         0x682   //104.1875
+#define USART_9600_25MHZ         0xA2C   //
 #define USART_115200_16MHZ       0x8A
 #define USART_115200_25MHZ       0xD8
-
-#define GetBaudRate(Fpclk, Over8, BaudRate) \
-	((Fpclk) / ((8 * (2 - Over8)) * (BaudRate)))
-
 
 
 #define OVER_SAMPLING_16          0
@@ -101,7 +81,7 @@ typedef struct
  *               USARTx           ->  USART_t                 *
  * Description : set the UART configuration                   *
  **************************************************/
-void USART_voidInit(USART_InitType *A_InitStruct,USART_ClockInitTypeDef *A_ClockInitStruct,USART_t *USARTx);
+void USART_voidInit(USART_InitType *A_InitStruct,USART_ClockInitTypeDef *A_ClockInitStruct,UART_t USARTx);
 
 /***************************************************
  * Name        : USART_voidSendByte                           *
@@ -110,7 +90,7 @@ void USART_voidInit(USART_InitType *A_InitStruct,USART_ClockInitTypeDef *A_Clock
  *               USARTx           ->  USART_t                 *
  * Description : Transmit only one byte at a time             *
  **************************************************/
-void USART_voidSendByte(USART_t *USARTx,u8 Copy_u8Data);
+void USART_voidSendByte(UART_t USARTx,u8 Copy_u8Data);
 
 /***************************************************
  * Name        : USART_voidTransmitString                     *
@@ -119,7 +99,7 @@ void USART_voidSendByte(USART_t *USARTx,u8 Copy_u8Data);
  *               USARTx           ->  USART_t                 *
  * Description : Transmit  String                             *
  **************************************************/
-void USART_voidSendString (USART_t *USARTx, u8* A_ptru8String );
+void USART_voidSendString (UART_t USARTx, u8* A_ptru8String );
 
 /***************************************************
  * Name        : USART_u8ReadDataRegister                     *
@@ -127,7 +107,7 @@ void USART_voidSendString (USART_t *USARTx, u8* A_ptru8String );
  * Arguments   : USARTx           ->  USART_t                 *
  * Description : Read Register Data                           *
  **************************************************/
-u8   USART_u8ReadDataRegister(USART_t *USARTx);
+u8   USART_u8ReadDataRegister(UART_t USARTx);
 
 /***************************************************
  * Name        : USART_voidReceiveByteSynchBlocking           *
@@ -136,7 +116,7 @@ u8   USART_u8ReadDataRegister(USART_t *USARTx);
  *               Ptr_u8Data       ->  u8*                     *
  * Description : receive data synchronous blocking            *
  **************************************************/
-void USART_voidReceiveByteSynchBlocking(USART_t *USARTx, u8* Ptr_u8Data);
+void USART_voidReceiveByteBlocking(UART_t USARTx, u8* Ptr_u8Data);
 
 /***************************************************
  * Name        : USART_voidSynchReceiveData                   *
@@ -145,7 +125,7 @@ void USART_voidReceiveByteSynchBlocking(USART_t *USARTx, u8* Ptr_u8Data);
  *               Ptr_u8Data       ->  u8*                     *
  * Description : receive data synchronous Nonblocking         *
  **************************************************/
-void USART_voidSynchReceiveDataNonBlocking (USART_t *USARTx, u8* Ptr_u8Data);
+void USART_voidReceiveDataNonBlocking (UART_t USARTx, u8* Ptr_u8Data);
 
 void USART1_voidSetCallBack( void (*ptr) (void) );
 void USART2_voidSetCallBack( void (*ptr) (void) );

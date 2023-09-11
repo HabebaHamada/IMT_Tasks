@@ -58,15 +58,16 @@
 /************************************
  * Baud Rate                        *
  * Options:                         *
- * 		1 -->  USART_9600_16MHZ     *
- * 		2 -->  USART_9600_25MHZ     *
- * 		3 -->  USART_19200_16MHZ    *
- * 		4 -->  USART_19200_25MHZ    *
- * 		5 -->  USART_115200_16MHZ   *
- * 		6 -->  USART_115200_25MHZ   *
+ * 		1 -->  9600
+ * 		2 -->  19200
+ * 		3 -->  115200
  ************************************/
 #define USART1_BAUD_RATE       USART_9600_16MHZ
 #define USART2_BAUD_RATE       USART_9600_16MHZ
 #define USART6_BAUD_RATE       USART_9600_16MHZ
+
+#define PCLK	 16000000UL
+
+#define THRESHOLD_VALUE 500000
 
 #endif

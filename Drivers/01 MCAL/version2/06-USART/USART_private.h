@@ -8,6 +8,27 @@
 #ifndef USART_PRIVATE_H_
 #define USART_PRIVATE_H_
 
+#define USART1_BASE_ADD                (u32)(0x40011000)
+#define USART2_BASE_ADD                (u32)(0x40004400)
+#define USART6_BASE_ADD                (u32)(0x40011400)
+
+
+typedef struct
+{
+	volatile u32 SR;
+	volatile u32 DR;
+	volatile u32 BRR;
+	volatile u32 CR1;
+	volatile u32 CR2;
+	volatile u32 CR3;
+	volatile u32 GTPR ;
+}USART_t;
+
+
+#define USART_1                        ((volatile USART_t*)(USART1_BASE_ADD))
+#define USART_2                        ((volatile USART_t*)(USART2_BASE_ADD))
+#define USART_6                        ((volatile USART_t*)(USART6_BASE_ADD))
+
 
 typedef enum
 {

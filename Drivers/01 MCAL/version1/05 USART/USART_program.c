@@ -43,7 +43,7 @@ void USART1_voidInit(void)
 	/*************USART Enable*********************/
 	USART1->CR1|=(USART1_Mode<<USART_CR1_UE);
 
-
+	USART1->SR=0;
 
 }
 void USART1_voidSendData(u8 Copy_u8Data)
@@ -51,8 +51,14 @@ void USART1_voidSendData(u8 Copy_u8Data)
 	while(GET_BIT(USART1->SR,USART_SR_TXE)==0);
 	USART1->DR=Copy_u8Data;
 	
+	/* wait until transmission is complete */
+	while(GET_BIT(USART1->SR, USART_SR_TC) == 0);
+
+	/* clear TC flag */
+	CLEAR_BIT(USART1->SR, USART_SR_TC);
+
 }
-void USART1_voidSynchReceiveData(u8* Ptr_u8Data);
+void USART1_voidSynchReceiveData(u8* Ptr_u8Data)
 {
 	/* Check for the Pointer */
 	if(Ptr_u8Data != NULL)
