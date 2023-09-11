@@ -1,6 +1,0 @@
-../Src/GPIO_program.c:16:5:GPIO_SetPinValue	24	static
-../Src/GPIO_program.c:33:5:GPIO_SetPortValue	24	static
-../Src/GPIO_program.c:50:5:GPIO_GetPinValue	24	static
-../Src/GPIO_program.c:68:5:GPIO_GetPortValue	24	static
-../Src/GPIO_program.c:87:6:GPIO_voidSetGroupChannel	16	static
-../Src/GPIO_program.c:97:7:GPIO_SetPinValue_BSRR	16	static

@@ -1,2 +1,0 @@
-../Inc/DAC_private.h:19:6:DAC_voidSendAudio	8	static
-../Src/DAC_program.c:28:6:DAC_voidStartAudio	8	static
